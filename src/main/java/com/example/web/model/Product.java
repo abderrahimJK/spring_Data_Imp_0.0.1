@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -18,9 +19,15 @@ public class Product {
 	@Column(unique  = true)
 	private String label;
 	
+	//mapping with userProduct Entity
 	@OneToMany(mappedBy="product")
 	private Collection<UserProduct> buys;
+	
+	//a product belong to one category
+	@ManyToOne
+	private Category category;
 
+	/*Getters/Setters section start*/
 	public int getId() {
 		return id;
 	}
@@ -45,7 +52,7 @@ public class Product {
 		this.buys = buys;
 	}
 	
-	
+	/*Getters/Setters section end*/
 	
 	
 }
