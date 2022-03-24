@@ -1,10 +1,13 @@
 package com.example.web.model;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Product {
@@ -14,5 +17,35 @@ public class Product {
 	private int id;
 	@Column(unique  = true)
 	private String label;
+	
+	@OneToMany(mappedBy="product")
+	private Collection<UserProduct> buys;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getLabel() {
+		return label;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
+	}
+
+	public Collection<UserProduct> getBuys() {
+		return buys;
+	}
+
+	public void setBuys(Collection<UserProduct> buys) {
+		this.buys = buys;
+	}
+	
+	
+	
 	
 }

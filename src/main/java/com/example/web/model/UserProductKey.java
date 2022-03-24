@@ -17,5 +17,7 @@ public class UserProductKey implements Serializable{
 	int userId;
 	@Column(name="product_id")
 	int productId;
+	
+	
 
 }
