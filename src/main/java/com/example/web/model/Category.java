@@ -2,7 +2,6 @@ package com.example.web.model;
 
 import java.util.Collection;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,19 +9,16 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class User {
-	
-	
+public class Category {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	private int id;
-	@Column(unique  = true)
 	private String name;
-	private String email;
 	
-	//mapping with userProduct Entity
-	@OneToMany(mappedBy = "user")
-	private Collection<UserProduct> buys;
+	//Category has many products
+	@OneToMany(mappedBy= "category")
+	private Collection<Product> products;
 
 	/*Getters/Setters section start*/
 	public int getId() {
@@ -41,22 +37,16 @@ public class User {
 		this.name = name;
 	}
 
-	public String getEmail() {
-		return email;
+	public Collection<Product> getProducts() {
+		return products;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Collection<UserProduct> getBuys() {
-		return buys;
-	}
-
-	public void setBuys(Collection<UserProduct> buys) {
-		this.buys = buys;
+	public void setProducts(Collection<Product> products) {
+		this.products = products;
 	}
 	
 	/*Getters/Setters section end*/
+	
+	
 	
 }
