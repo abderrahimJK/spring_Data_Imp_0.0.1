@@ -24,6 +24,14 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private Collection<UserProduct> buys;
 
+	
+
+	public User(String name, String email) {
+		super();
+		this.name = name;
+		this.email = email;
+	}
+
 	/*Getters/Setters section start*/
 	public int getId() {
 		return id;
