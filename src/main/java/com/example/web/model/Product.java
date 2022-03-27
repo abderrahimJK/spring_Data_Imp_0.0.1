@@ -18,7 +18,10 @@ public class Product {
 	private int id;
 	@Column(unique  = true)
 	private String label;
+	private double price;
 	
+	
+
 	//mapping with userProduct Entity
 	@OneToMany(mappedBy="product")
 	private Collection<UserProduct> buys;
@@ -26,10 +29,36 @@ public class Product {
 	//a product belong to one category
 	@ManyToOne
 	private Category category;
+	
+	
+	
+	
+
+	public Product(String label, double price) {
+		super();
+		this.label = label;
+		this.price = price;
+	}
 
 	/*Getters/Setters section start*/
 	public int getId() {
 		return id;
+	}
+	
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public void setId(int id) {
